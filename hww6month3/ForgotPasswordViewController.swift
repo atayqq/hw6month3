@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import IQKeyboardManagerSwift
 class ForgotPasswordViewController: UIViewController {
     
     var email: String?

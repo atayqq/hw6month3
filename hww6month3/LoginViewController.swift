@@ -7,43 +7,45 @@
 
 import UIKit
 import SnapKit
+import IQKeyboardManagerSwift
+
 
 class LoginViewController: UIViewController {
     
     
     
     private let myImage: UIImageView = {
-            
-            let image =  UIImageView()
-            image.image = UIImage(named: "Rectangle")
-            return image
-            
-        }()
+        
+        let image =  UIImageView()
+        image.image = UIImage(named: "Rectangle")
+        return image
+        
+    }()
     
     private let facebookLogo: UIImageView = {
-            
-            let image = UIImageView()
-            image.image = UIImage(named: "facebook")
-            return image
-            
-        }()
+        
+        let image = UIImageView()
+        image.image = UIImage(named: "facebook")
+        return image
+        
+    }()
     
     private let googleLogo: UIImageView = {
-            
-            let image = UIImageView()
-            image.image = UIImage(named: "google")
-            return image
-            
-        }()
+        
+        let image = UIImageView()
+        image.image = UIImage(named: "google")
+        return image
+        
+    }()
     
     
     private let instagramLogo: UIImageView = {
-            
-            let image = UIImageView()
-            image.image = UIImage(named: "instagram")
-            return image
-            
-        }()
+        
+        let image = UIImageView()
+        image.image = UIImage(named: "instagram")
+        return image
+        
+    }()
     
     // MARK: -- UILABEL
     private let labelWC: UILabel = {
@@ -118,16 +120,16 @@ class LoginViewController: UIViewController {
     
     private let emailTextField: UITextField = {
         let tf = UITextField()
-      
-           
-              tf.placeholder = "Email"
-              tf.layer.cornerRadius = 6
-              let spacerView = UIView(frame: CGRect(x: 0, y: 0, width: 18, height: 0))
-              tf.leftView = spacerView
-              tf.leftViewMode = .always
+        
+        
+        tf.placeholder = "Email"
+        tf.layer.cornerRadius = 6
+        let spacerView = UIView(frame: CGRect(x: 0, y: 0, width: 18, height: 0))
+        tf.leftView = spacerView
+        tf.leftViewMode = .always
         tf.backgroundColor = .white
-              return tf
-
+        return tf
+        
     }()
     
     private let passwordTextField: UITextField = {
@@ -150,7 +152,7 @@ class LoginViewController: UIViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.layer.cornerRadius = 24
         button.backgroundColor = .systemBlue
-      
+        
         return button
     }()
     
@@ -158,16 +160,16 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         initUI()
         addGesture()
-     
+        
     }
     
     private func initUI (){
         [myImage, labelWC, labelAC, emailLabel, emailTextField,passwordLabel, passwordTextField, FPLabel, button, dontAC, createNow, facebookLogo, googleLogo, instagramLogo].forEach { box in
-                       view.addSubview(box)
-                   }
+            view.addSubview(box)
+        }
         constraint()
         initAction()
     }
@@ -178,10 +180,10 @@ class LoginViewController: UIViewController {
         
         
         myImage.snp.makeConstraints{ make in
-                   make.top.equalToSuperview().offset(0)
+            make.top.equalToSuperview().offset(0)
             make.leading.trailing.equalToSuperview().inset(0)
             make.height.equalTo(200)
-                 }
+        }
         facebookLogo.snp.makeConstraints { make in
             make.top.equalTo(dontAC.snp.bottom).offset(11)
             make.centerX.equalToSuperview()
@@ -235,7 +237,7 @@ class LoginViewController: UIViewController {
         createNow.snp.makeConstraints { make in
             make.top.equalTo(dontAC.snp.top)
             make.left.equalTo(dontAC.snp.right)
-       
+            
         }
         
         
@@ -252,7 +254,7 @@ class LoginViewController: UIViewController {
             make.height.equalTo(48)
         }
         
-      
+        
         
         button.snp.makeConstraints { make in
             make.top.equalTo(FPLabel.snp.bottom).offset(28)
@@ -260,15 +262,15 @@ class LoginViewController: UIViewController {
             make.height.equalTo(48)
         }
         
-       
-      
+        
+        
         
         
     }
-  
+    
     private func addGesture(){
         createNow.isUserInteractionEnabled = true
-              createNow.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(createNowTapped)))
+        createNow.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(createNowTapped)))
     }
     
     @objc func createNowTapped() {
@@ -276,41 +278,41 @@ class LoginViewController: UIViewController {
         let vc = PasswordViewController()
         self.navigationController?.pushViewController(vc, animated: true)
         
-       }
+    }
     
     
-   private func initAction(){
-       button.addTarget(self, action: #selector(login(_ :)), for: .touchUpInside)
-       keyBoradSetup()
+    private func initAction(){
+        button.addTarget(self, action: #selector(login(_ :)), for: .touchUpInside)
+        ()
     }
     
     @objc func login(_ sender: UIButton){
         if emailTextField.text?.isEmpty ?? true || passwordTextField.text?.isEmpty ?? true {
-      
-                         textField(emailTextField)
-                         textField(passwordTextField)
-                            }
-                     if emailTextField.text!.count > 0 || passwordTextField.text!.count > 0{
-                                emailTextField.layer.borderColor = UIColor.white.cgColor
-                         passwordTextField.layer.borderColor = UIColor.white.cgColor
-                                        }
+            
+            textField(emailTextField)
+            textField(passwordTextField)
+        }
+        if emailTextField.text!.count > 0 || passwordTextField.text!.count > 0{
+            emailTextField.layer.borderColor = UIColor.white.cgColor
+            passwordTextField.layer.borderColor = UIColor.white.cgColor
+        }
     }
     
     func textField (_ text:UITextField)  {
-            text.layer.borderWidth = 1
-          text.layer.borderColor = UIColor.red.cgColor
-           text.placeholder = "заполните поле"
-        }
-    
-     func keyBoradSetup(){
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-                 view.addGestureRecognizer(tapGesture)
+        text.layer.borderWidth = 1
+        text.layer.borderColor = UIColor.red.cgColor
+        text.placeholder = "заполните поле"
     }
     
-     @objc private func hideKeyboard() {
-              view.endEditing(true)
-          }
-   
-
+    //     func keyBoradSetup(){
+    //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+    //                 view.addGestureRecognizer(tapGesture)
+    //    }
+    //
+    //     @objc private func hideKeyboard() {
+    //              view.endEditing(true)
+    //          }
+    //
+    //
 }
 

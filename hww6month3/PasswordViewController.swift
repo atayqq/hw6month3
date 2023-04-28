@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import IQKeyboardManagerSwift
 
 class PasswordViewController: UIViewController {
     
@@ -264,7 +265,7 @@ class PasswordViewController: UIViewController {
   
     private func initAction(){
         button.addTarget(self, action: #selector(login(_ :)), for: .touchUpInside)
-        keyBoradSetup()
+        ()
     }
     
     @objc private func login(_ sender: UIButton){
@@ -296,16 +297,7 @@ class PasswordViewController: UIViewController {
          
      }
     
-    func keyBoradSetup(){
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-                 view.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc private func hideKeyboard() {
-              view.endEditing(true)
-          }
-    
-    }
 
+ }
 
 

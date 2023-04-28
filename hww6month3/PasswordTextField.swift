@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import IQKeyboardManagerSwift
 
 public class PasswordTextField: UITextField {
     
@@ -48,7 +49,6 @@ public class PasswordTextField: UITextField {
     @objc private func showPasswordButtonTapped() {
         isSecureTextEntry.toggle()
         
-        // изменение изображения кнопки в зависимости от значения isSecureTextEntry
         let imageName = isSecureTextEntry ? "eye.slash" : "eye"
         showPasswordButton.setImage(UIImage(systemName: imageName), for: .normal)
     }
