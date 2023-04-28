@@ -2,11 +2,11 @@
 //  AppDelegate.swift
 //  hww6month3
 //
-//  Created by atay on 28/4/23.
+//  Created by atay on 27/4/23.
 //
 
 import UIKit
-
+import SnapKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -33,4 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+
+
 
